@@ -50,30 +50,47 @@ What's the time complexity?
 
  */
 
-function Stack(capacity) {
-  // implement me...
+class Stack {
+  constructor(capacity) {
+    this.capacity = capacity;
+    this.count = 0;
+    this.storage = {};
+  }
+
+  push(value) {
+    if (this.count === this.capacity) {
+      return 'Max capacity reached';
+    }
+
+    this.storage[this.count++] = value;
+    return this.count;
+  }
+
+  pop() {
+    if (this.count === 0) {
+      return 'There are no elements left';
+    }
+    
+    let value = this.storage[--this.count];
+
+    delete this.storage[this.count];
+    return value;
+  }
+
+  peek() {
+    if (this.count === 0) {
+      return 'There are no elements left';
+    }
+
+    return this.storage[this.count - 1];
+  }
+
+  getCount() {
+    return this.count;
+  }
 }
 
-Stack.prototype.push = function(value) {
-  // implement me...
-};
-// Time complexity:
-
-Stack.prototype.pop = function() {
-  // implement me...
-};
-// Time complexity:
-
-Stack.prototype.peek = function() {
-  // implement me...
-};
-// Time complexity:
-
-Stack.prototype.count = function() {
-  // implement me...
-};
-// Time complexity:
-
+module.exports = Stack;
 
 /*
 *** Exercises:
